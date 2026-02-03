@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+
+:root {
+    --bg-sky: #A7D8F0;
+    --planet-green: #C5E6A6;
+    --planet-border: #FFFFFF;
+    --text-color: #FFFFFF;
+    --text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    background-color: var(--bg-sky);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    color: var(--text-color);
+    user-select: none;
+}
+
+.app-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Clouds */
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50px;
+    opacity: 0.9;
+    z-index: 1;
+}
+.cloud::after, .cloud::before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+}
+.cloud-1 { width: 200px; height: 60px; top: 100px; left: -50px; }
+.cloud-1::after { width: 80px; height: 80px; top: -40px; left: 30px; }
+.cloud-1::before { width: 60px; height: 60px; top: -20px; left: 100px; }
+
+.cloud-2 { width: 160px; height: 50px; top: 50px; right: 10%; }
+.cloud-2::after { width: 60px; height: 60px; top: -30px; left: 20px; }
+.cloud-2::before { width: 50px; height: 50px; top: -15px; left: 80px; }
+
+.cloud-3 { width: 250px; height: 80px; top: 150px; right: -80px; opacity: 0.8; }
+.cloud-3::after { width: 100px; height: 100px; top: -50px; left: 40px; }
+.cloud-3::before { width: 70px; height: 70px; top: -20px; left: 140px; }
+
+@keyframes cloudRight {
+    0% { transform: translateX(-120vw); }
+    100% { transform: translateX(120vw); }
+}
+@keyframes cloudLeft {
+    0% { transform: translateX(120vw); }
+    100% { transform: translateX(-120vw); }
+}
+.cloud-1 { animation: cloudRight 60s linear infinite; will-change: transform; }
+.cloud-2 { animation: cloudLeft 75s linear infinite; will-change: transform; }
+.cloud-3 { animation: cloudRight 90s linear infinite; will-change: transform; }
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Fix vertical alignment */
+    padding: 20px 40px;
+    z-index: 10;
+    position: relative;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.menu-icon { font-size: 2rem; cursor: pointer; transform: translateY(-30px); }
+.logo { font-size: 2.5rem; font-weight: 600; transform: translateY(-30px); text-shadow: 0 3px 6px rgba(0,0,0,0.25); color: var(--text-color); }
+
+.header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.top-mascots {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 0;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(6px);
+}
+
+.mascot-float {
+    width: 50px;
+    height: 50px;
+    animation: float 3s ease-in-out infinite;
+    cursor: pointer;
+}
+.floating-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.mascot-float:nth-child(2) { animation-delay: 1.5s; }
+
+.counter {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.label-me-header {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 5px;
+    /* This matches the position in the image better */
+}
+
+.header-right { position: relative; }
+
+.side-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 240px;
+    background: #fff;
+    box-shadow: 5px 0 20px rgba(0,0,0,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 200;
+    padding: 20px 16px;
+}
+.side-drawer.open {
+    transform: translateX(0);
+}
+.drawer-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+.drawer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.drawer-item {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #f7f7f7;
+    color: #555;
+    cursor: pointer;
+    font-weight: 600;
+}
+.drawer-item:hover {
+    background: #efefef;
+    color: #222;
+}
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+    z-index: 150;
+}
+.drawer-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+.profile-sun-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    /* Ensure header stays on top */
+    z-index: 20;
+}
+
+.profile-sun-container:hover {
+    transform: scale(1.05);
+}
+
+.sun-rays {
+    position: absolute;
+    top: 50%; 
+    left: 30px; /* Center of profile pic (60px / 2) */
+    transform: translate(-50%, -50%);
+    width: 140px; height: 140px; /* Much larger for longer rays */
+    background: transparent;
+    border-radius: 50%;
+    z-index: 5; /* Above toggle switch (4) but below profile (10) */
+    /* No box-shadow on the container itself, rays are separate */
+}
+
+/* Add actual rays using a pseudo-element on .sun-rays */
+.sun-rays::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-conic-gradient(
+        from 0deg,
+        rgba(250, 208, 44, 0) 0deg,
+        rgba(250, 208, 44, 0) 18deg,
+        #FAD02C 18deg,
+        #FAD02C 24deg, /* Thicker rays (6deg) */
+        rgba(250, 208, 44, 0) 24deg,
+        rgba(250, 208, 44, 0) 30deg /* Repeat every 30deg = 12 rays */
+    );
+    border-radius: 50%;
+    animation: spin 20s linear infinite;
+    /* Mask to detach rays from center - keeping center clear */
+    -webkit-mask: radial-gradient(transparent 50%, black 51%);
+    mask: radial-gradient(transparent 50%, black 51%);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes sunPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.profile-pic {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #FAD02C;
+    background: #333;
+    z-index: 10; /* Top most */
+    position: relative;
+}
+.profile-pic img { width: 100%; height: 100%; object-fit: cover; }
+
+.toggle-switch {
+    background: #D4B243; /* Mustard/Dark Yellow */
+    height: 40px; 
+    width: 70px;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Arrow on right */
+    padding-right: 15px;
+    margin-left: -30px; /* Tuck behind profile pic */
+    z-index: 4; /* Behind profile pic */
+    box-shadow: none;
+    color: #594923; /* Dark brown arrow */
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+    /* Reset previous styles */
+    margin-bottom: 0;
+    left: auto;
+}
+
+.profile-sun-container.active .toggle-switch i {
+    transform: rotate(180deg);
+}
+
+/* Remove the old rotation on the whole switch */
+.profile-sun-container.active .toggle-switch {
+    transform: none;
+}
+
+/* Dropdown Menu */
+.profile-dropdown {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 100;
+}
+
+.profile-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 600;
+}
+
+.dropdown-item:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.dropdown-item i {
+    width: 20px;
+    text-align: center;
+    color: #888;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 5px 0;
+}
+
+.dropdown-item.logout {
+    color: #ff6b6b;
+}
+
+.dropdown-item.logout:hover {
+    background: #fff0f0;
+    color: #e05252;
+}
+
+
+/* Main World */
+.world-container {
+    position: absolute;
+    bottom: -65vh; /* Center of circle at bottom of screen */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120vh; /* Reduced size */
+    height: 120vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.planet-core {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--planet-green);
+    border-radius: 50%;
+    box-shadow: inset 0 20px 50px rgba(0,0,0,0.05);
+    z-index: 5;
+    overflow: hidden;
+}
+
+.grass-texture {
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 15px,
+        rgba(0,0,0,0.04) 15px,
+        rgba(0,0,0,0.04) 30px
+    );
+}
+
+.planet-rings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 4;
+    pointer-events: none;
+}
+.ring {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 15px solid rgba(255, 255, 255, 0.4);
+}
+.ring-1 { width: 105%; height: 105%; }
+.ring-2 { width: 115%; height: 115%; opacity: 0.6; }
+.ring-3 { width: 125%; height: 125%; opacity: 0.3; }
+
+/* Arc Items */
+.arc-items-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 10;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.arc-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /* Remove fixed height to let content size itself */
+    width: 100px; /* Fixed width for alignment */
+    margin-left: -50px; /* Center horizontally */
+    transform-origin: center top; /* Rotate around the world center (top of element is at center) */
+    /* Rotate, push out to edge (60vh), then pull up by 100% of own height to sit ON TOP of edge */
+    transform: rotate(var(--angle)) translateY(-60vh) translateY(-100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    pointer-events: none; /* Container doesn't block, children do */
+}
+
+/* Allow clicking on the content */
+.arc-item .character-container, .arc-item .label-text {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.character-container {
+    margin-top: 10px;
+    background: #FFF;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 4px solid transparent;
+}
+
+.character-img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+.label-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    height: 30px; /* Space for curved text */
+}
+
+.arc-item:hover .character-container {
+    transform: scale(1.15);
+}
+
+.arc-item.active .character-container {
+    border-color: #e69e9e;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(218, 109, 109, 0.527);
+}
