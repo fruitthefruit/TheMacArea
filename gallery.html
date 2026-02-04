@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC - Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="glow-orb"></div>
+    <div class="overlay"></div>
+
+    <header>
+        <div class="logo">MAC 
+            <svg class="logo-icon" viewBox="0 0 24 24">
+                <path d="M4 20 L20 4 L4 4 L20 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="interests.html">INTERESTS</a></li>
+                <li><a href="hobbies.html">HOBBIES</a></li>
+                <li><a href="gallery.html" class="active">GALLERY</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <a href="#monkey" class="btn-talk">LET'S TALK &rightarrow;</a>
+            <button class="menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Left Sidebar -->
+        <aside class="sidebar-left">
+            <div class="grid-decoration">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+            <div class="phone-number">+(63) 991 - 488 - 0101</div>
+            <div class="scroll-icon"></div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="gallery-section">
+            <div class="gallery-grid">
+                <!-- Gallery Items -->
+                <div class="gallery-item">
+                    <img src="Josh%20Pogi.png" alt="Portrait">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">PORTRAIT</div>
+                        <div class="gallery-desc">Main profile capture</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Josh%20Pogi.png" alt="Lifestyle">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">LIFESTYLE</div>
+                        <div class="gallery-desc">Casual everyday look</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Josh%20Pogi.png" alt="Nature">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">NATURE</div>
+                        <div class="gallery-desc">Scenic landscapes</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Josh%20Pogi.png" alt="Animals">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">ANIMALS</div>
+                        <div class="gallery-desc">Wildlife and pets</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Josh%20Pogi.png" alt="Food" >
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">FOOD</div>
+                        <div class="gallery-desc">Culinary delights</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Josh%20Pogi.png" alt="Vehicles">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">VEHICLES</div>
+                        <div class="gallery-desc">Cars and bikes</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Josh%20Pogi.png" alt="Fireworks">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">FIREWORKS</div>
+                        <div class="gallery-desc">Night sky spectacles</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Josh%20Pogi.png" alt="Flowers">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">FLOWERS</div>
+                        <div class="gallery-desc">Botanical beauty</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar-right">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/josh.rareza.2025"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/mcknzii__/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Side Drawer -->
+    <div class="backdrop"></div>
+    <div class="side-drawer">
+        <div class="drawer-header">
+            <button class="close-btn"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="interests.html">INTERESTS</a></li>
+                <li><a href="hobbies.html">HOBBIES</a></li>
+                <li><a href="gallery.html" class="active">GALLERY</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
