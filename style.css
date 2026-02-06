@@ -24,6 +24,7 @@ body {
     flex-direction: column;
 }
 
+/* Background Grid */
 .background-grid {
     position: fixed;
     top: 0;
@@ -56,6 +57,7 @@ body {
     pointer-events: none;
 }
 
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -136,6 +138,7 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 1.2rem;
 }
 
+/* Main Layout */
 main {
     display: flex;
     flex: 1;
@@ -146,6 +149,7 @@ main {
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
+/* Page Transition Classes */
 main.fade-out {
     animation: slideOutLeft 0.5s ease-in forwards;
 }
@@ -180,12 +184,14 @@ main.fade-in {
     }
 }
 
+/* Nav Link Click Animation */
 nav ul li a:active {
     transform: scale(0.95);
     color: var(--cyan-accent);
     text-shadow: 0 0 15px var(--cyan-accent);
 }
 
+/* Add a pulse animation to active tab */
 nav ul li a.active {
     animation: pulse-text 2s infinite;
 }
@@ -254,6 +260,7 @@ aside {
     background: #333;
 }
 
+/* Profile Section */
 .profile-section {
     flex: 1;
     display: flex;
@@ -264,7 +271,6 @@ aside {
 }
 
 .profile-photo-container {
-    
     flex: 0 0 250px;
 }
 
@@ -272,11 +278,15 @@ aside {
     position: relative;
     border: 1px solid var(--primary-red);
     padding: 5px;
+    /* clip-path: polygon(
+        0 10%, 10% 0, 90% 0, 100% 10%, 
+        100% 90%, 90% 100%, 10% 100%, 0 90%
+    ); */
+    /* Approximating the complex shape with simpler borders and psuedo elements */
     background: transparent;
     box-shadow: inset 0 0 20px rgba(255, 0, 34, 0.1);
     border-radius: 4px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
 }
 
 .hud-frame:hover {
@@ -292,6 +302,17 @@ aside {
     border: none;
 }
 
+/* Decorative Corners for Photo - Removed as per request */
+/* .hud-frame::before, .hud-frame::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-red);
+    transition: all 0.3s ease;
+} */
+
+/* HUD Info Grid */
 .info-grid {
     flex: 1;
     display: grid;
@@ -305,6 +326,10 @@ aside {
     border: 1px solid var(--primary-red);
     padding: 20px;
     position: relative;
+    /* clip-path: polygon(
+        10% 0, 90% 0, 100% 10%, 100% 90%, 
+        90% 100%, 10% 100%, 0 90%, 0 10%
+    ); */
     border-radius: 5px;
     box-shadow: inset 0 0 20px rgba(255, 0, 34, 0.1);
 }
@@ -332,27 +357,27 @@ aside {
 
 .likes-box, .hobbies-box {
     grid-column: 2 / 3;
-    grid-row: span 2; 
+    grid-row: span 2; /* Likes box spans roughly 2 units if needed */
+}
+
+/* Specific Box Adjustments for Grid Flow */
 .likes-box {
     grid-row: 1 / 3;
 }
-    
 .hobbies-box {
     grid-row: 3 / 5;
 }
-    
 .name-box {
     grid-row: 1 / 2;
 }
-    
 .date-box {
     grid-row: 2 / 3;
 }
-    
 .stats-box {
     grid-row: 3 / 4;
 }
 
+/* Typography in Boxes */
 .label {
     color: var(--primary-red);
     font-family: 'Orbitron', sans-serif;
@@ -395,6 +420,7 @@ aside {
     font-style: italic;
 }
 
+/* Progress Bar */
 .progress-bar-container {
     width: 100%;
     height: 30px;
@@ -420,6 +446,7 @@ aside {
     background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
 }
 
+/* Complex HUD Decorations (Pseudo-elements) */
 .hud-deco {
     position: absolute;
     bottom: 5px;
@@ -437,40 +464,40 @@ aside {
     );
 }
 
+/* Mascot placeholders */
 .mascot-img, .mascot-img-top {
     width: 60px;
     height: 60px;
     background: #fff;
     border-radius: 50%;
+    /* In a real project, use an img tag or background-image */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="white"/><circle cx="35" cy="40" r="5" fill="black"/><circle cx="65" cy="40" r="5" fill="black"/><path d="M 35 60 Q 50 70 65 60" stroke="black" fill="transparent" stroke-width="3"/></svg>');
     background-size: cover;
 }
 
+/* Responsive adjustments */
 @media (max-width: 1200px) {
     .profile-section {
         flex-direction: column;
     }
-    
     .info-grid {
         grid-template-columns: 1fr;
     }
-    
     .likes-box, .hobbies-box, .name-box, .date-box, .stats-box {
         grid-column: auto;
         grid-row: auto;
     }
-    
     .interests-container {
         flex-direction: column;
         align-items: center;
     }
-    
     .interest-card {
         width: 100%;
         max-width: 500px;
     }
 }
 
+/* Monkey Popup Modal */
 .monkey-modal {
     position: fixed;
     top: 0; left: 0;
@@ -538,6 +565,7 @@ aside {
     background: #ff3344;
 }
 
+/* Interests Section Styles */
 .interests-section {
     flex: 1;
     display: flex;
@@ -568,11 +596,13 @@ aside {
     border: none;
 }
 
+/* Main Border Shape */
 .interest-card::after {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     border: 2px solid var(--primary-red);
+    /* Chamfered corners - 40px cut */
     clip-path: polygon(
         40px 0, calc(100% - 40px) 0, 
         100% 40px, 100% calc(100% - 40px), 
@@ -584,6 +614,7 @@ aside {
     pointer-events: none;
 }
 
+/* Inner Detail Line */
 .interest-card::before {
     content: '';
     position: absolute;
@@ -599,6 +630,7 @@ aside {
     pointer-events: none;
 }
 
+/* Side decorations (The "Tabs") */
 .card-side-deco {
     position: absolute;
     width: 6px;
@@ -620,6 +652,7 @@ aside {
     clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
 }
 
+/* Corner Decorations (Optional - keeping simple for now) */
 .card-deco {
     display: none;
 }
@@ -644,6 +677,7 @@ aside {
     text-indent: 40px;
 }
 
+/* Specific styles for About page layout */
 .about-section {
     flex: 1;
     display: flex;
@@ -674,6 +708,7 @@ aside {
     flex-direction: column;
 }
 
+/* Decorative corners/elements for the about boxes to match screenshot style */
 .about-box::before {
     content: '';
     position: absolute;
@@ -733,6 +768,7 @@ aside {
     box-shadow: 0 0 15px rgba(255, 0, 34, 0.3);
 }
 
+/* Side Drawer */
 .side-drawer {
     position: fixed;
     top: 0;
@@ -827,6 +863,7 @@ aside {
     pointer-events: all;
 }
 
+/* Hobbies Section */
 .hobbies-section {
     flex: 1;
     display: flex;
@@ -843,7 +880,7 @@ aside {
     gap: 30px;
     width: 100%;
     max-width: 1200px;
-    height: 80vh;
+    height: 80vh; /* Use substantial height */
 }
 
 .hobby-card {
@@ -855,6 +892,7 @@ aside {
     justify-content: flex-start;
     box-shadow: inset 0 0 20px rgba(255, 0, 34, 0.1);
     border: 2px solid var(--primary-red);
+    /* Chamfered corners - octagon-like */
     clip-path: polygon(
         20px 0, calc(100% - 20px) 0, 
         100% 20px, 100% calc(100% - 20px), 
@@ -884,7 +922,7 @@ aside {
 }
 
 .hobby-text {
-    color: #ccc; /
+    color: #ccc; /* Grayish text */
     font-family: 'Rajdhani', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
@@ -892,6 +930,7 @@ aside {
     text-indent: 30px;
 }
 
+/* Decorative elements for hobby cards */
 .card-decoration-bottom {
     position: absolute;
     bottom: 0;
@@ -909,6 +948,7 @@ aside {
     transform: skewX(-20deg);
 }
 
+/* Additional responsive for hobbies */
 @media (max-width: 900px) {
     .hobbies-grid {
         grid-template-columns: 1fr;
@@ -916,6 +956,7 @@ aside {
     }
 }
 
+/* Gallery Section */
 .gallery-section {
     flex: 1;
     display: flex;
@@ -923,7 +964,7 @@ aside {
     justify-content: center;
     padding: 20px;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: auto; /* Allow scrolling if many images */
 }
 
 .gallery-grid {
@@ -939,7 +980,7 @@ aside {
     background: rgba(0, 0, 0, 0.5);
     border: 1px solid var(--primary-red);
     position: relative;
-    aspect-ratio: 1; 
+    aspect-ratio: 1; /* Square images */
     overflow: hidden;
     border-radius: 5px;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -1014,6 +1055,7 @@ aside {
     100% { background-position: -200% 0; }
 }
 
+/* Contact Section */
 .contact-section {
     flex: 1;
     display: flex;
